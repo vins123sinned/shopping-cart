@@ -1,0 +1,101 @@
+.navbar {
+  font-family: "latobold", Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  padding: 1.2rem 1.5rem;
+}
+
+.categoriesList {
+  position: absolute;
+  top: 4.5rem;
+  left: 0;
+  list-style-type: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.categoriesList a {
+  padding: 1rem 4rem;
+}
+
+.categoriesList a:hover {
+  background-color: #f3f1f1;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+}
+
+.menuButton {
+  background-color: transparent;
+  border: none;
+  margin-right: 0.5rem;
+}
+
+.menuButton span {
+  position: relative;
+  top: 0.13rem;
+}
+
+.menuButton:hover {
+  cursor: pointer;
+  background-color: #e4e4e4;
+  border-radius: 5px;
+}
+
+.cartLink {
+  display: flex;
+  align-items: center;
+}
+
+.cartLink span {
+  margin-right: 0.5rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+}
+
+@media (min-width: 560px) and (max-width: 900px) {
+  .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (min-width: 900px) {
+  .navbar {
+    padding: 1rem 2.5rem;
+  }
+
+  .categoriesList {
+    position: static;
+    display: flex;
+    justify-content: center;
+    box-shadow: none;
+  }
+
+  .categoriesList a {
+    padding: 0;
+  }
+
+  .menuButton {
+    display: none;
+  }
+
+  .categoriesList li {
+    padding: 0 2rem;
+  }
+
+  .categoriesList a:hover {
+    border-color: #000;
+    background-color: transparent;
+  }
+}

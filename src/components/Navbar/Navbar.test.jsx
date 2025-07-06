@@ -8,14 +8,24 @@ describe("Navigation component", () => {
     render(
       <MemoryRouter>
         <Navbar />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
-    expect(screen.getByRole('link', {name: /^VInSION$/i})).toBeInTheDocument();
-    expect(screen.getByRole('link', {name: /^Men's Clothing$/i})).toBeInTheDocument();
-    expect(screen.getByRole('link', {name: /^Women's Clothing$/i})).toBeInTheDocument();
-    expect(screen.getByRole('link', {name: /^Jewelry$/i})).toBeInTheDocument();
-    expect(screen.getByRole('link', {name: /^Electronics$/i})).toBeInTheDocument();
-    expect(screen.getByRole('link', {name: /Cart/i})).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: /^VInSION$/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: /^Men's Clothing$/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: /^Women's Clothing$/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: /^Jewelry$/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: /^Electronics$/i }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Cart/i })).toBeInTheDocument();
   });
 });
