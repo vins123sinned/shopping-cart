@@ -9,14 +9,8 @@ const Navbar = () => {
   useEffect(() => {
     const mediaQuery = window.matchMedia("(min-width: 900px");
 
-    const handleChange = (event) => {
-      if (event.matches) {
-        setOpenCategories(true);
-      } else {
-        setOpenCategories(false);
-      }
-    };
-
+    const handleChange = (event) => setOpenCategories(event.matches);
+    // initial check
     handleChange(mediaQuery);
 
     mediaQuery.addEventListener("change", handleChange);

@@ -1,0 +1,37 @@
+.hero {
+  position: relative;
+  background: url("../../assets/images/heroImage.jpg") bottom/cover no-repeat;
+  height: 50vh;
+  max-height: 600px;
+}
+
+.hero:hover {
+  cursor: pointer;
+}
+
+.textContainer {
+  position: absolute;
+  left: 50%;
+  bottom: 3rem;
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.heading,
+.para {
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.heading {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.logo {
+  font-family: "latobold", Arial, Helvetica, sans-serif;
+}
+
+.para {
+  font-size: 1.5rem;
+}
