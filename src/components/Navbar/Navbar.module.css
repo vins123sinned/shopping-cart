@@ -17,10 +17,16 @@
   top: 4.5rem;
   left: 0;
   list-style-type: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   width: 100%;
   padding: 0;
   margin: 0;
+  z-index: 998;
+}
+
+.categoriesList li {
+  border-bottom: 1px solid #f1f1f1;
 }
 
 .categoriesList a {
@@ -72,6 +78,10 @@
     left: 50%;
     transform: translateX(-50%);
   }
+
+  .categoriesList {
+    top: 4rem;
+  }
 }
 
 @media (min-width: 900px) {
@@ -84,6 +94,10 @@
     display: flex;
     justify-content: center;
     box-shadow: none;
+  }
+
+  .categoriesList li {
+    border-bottom: none;
   }
 
   .categoriesList a {
