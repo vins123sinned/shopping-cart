@@ -1,13 +1,220 @@
+.categorySection {
+  overflow: hidden;
+}
+
+.categorySectionHeading {
+  text-align: center;
+  font-size: 2rem;
+  margin: 3rem 0 1.5rem 0;
+}
+
+.categoriesList {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: 1fr;
+  padding: 0 1rem;
+}
+
+.categoriesList li {
+  position: relative;
+  height: 30vh;
+  max-height: 400px;
+  transition: transform 0.3s ease;
+}
+
+.categoriesList li:hover {
+  cursor: pointer;
+  transform: scale(1.01);
+}
+
+.categoriesList li:hover .cardHeading {
+  border-color: #fff;
+}
+
+.cardText {
+  position: absolute;
+  left: 0.75rem;
+  bottom: 1rem;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.cardHeading {
+  display: inline-block;
+  font-size: 2rem;
+  border-bottom: 2.5px solid transparent;
+  margin-bottom: 0.5rem;
+  transition: border-bottom 0.3s ease;
+}
+
+.cardAttribution {
+  font-size: 1.1rem;
+}
+
+.cardAttribution a {
+  display: inline;
+  text-decoration: underline;
+  color: #fff;
+}
+
+.cardAttribution a:hover {
+  color: #000;
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.6);
+}
+
+.shoes {
+  background: url("../../assets/images/shoesCategory.jpg") 0% 30% / cover
+    no-repeat;
+}
+
+.jewelry {
+  background: url("../../assets/images/jewelryCategory.jpg") right/cover
+    no-repeat;
+}
+
+.mensClothing {
+  background: url("../../assets/images/mensClothingCategory.jpg") 50% 15% / 150%
+    no-repeat;
+}
+
+.womensClothing {
+  background: url("../../assets/images/womensClothingCategory.jpg") 10% 25% /
+    cover no-repeat;
+}
+
+@media (min-width: 500px) {
+  .categoriesList {
+    padding: 0 3rem;
+  }
+}
+
+@media (min-width: 680px) {
+  .categoriesList {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 200px 100px 100px 200px;
+    grid-template-areas:
+      "shoes shoes womensClothing jewelry"
+      "shoes shoes womensClothing jewelry"
+      "mensClothing mensClothing womensClothing jewelry"
+      "mensClothing mensClothing womensClothing jewelry";
+    padding: 0 1rem;
+  }
+
+  .categoriesList li {
+    height: auto;
+    max-height: none;
+  }
+
+  .cardAttribution {
+    display: none;
+  }
+
+  .shoes {
+    grid-area: shoes;
+  }
+
+  .jewelry {
+    grid-area: jewelry;
+    background-position: right;
+  }
+
+  .mensClothing {
+    grid-area: mensClothing;
+  }
+
+  .womensClothing {
+    grid-area: womensClothing;
+    background-position: center;
+  }
+
+  .womensClothing .cardHeading {
+    width: 8ch;
+  }
+}
+
+@media (min-width: 1250px) {
+  .categoriesList {
+    padding: 0 3rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .categoriesList {
+    padding: 0 5rem;
+  }
+
+  .womensClothing .cardHeading {
+    width: auto;
+  }
+}
+
+/*
+.categorySection {
+  overflow: hidden;
+}
+
+.categorySectionHeading {
+  text-align: center;
+  font-size: 2.5rem;
+  margin: 3rem 0 1.5rem 0;
+}
+
 .categoriesList {
   display: grid;
   gap: 1rem;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 200px 200px 200px;
+  grid-template-rows: 200px 100px 100px 200px;
   grid-template-areas:
     "shoes shoes womensClothing jewelry"
     "shoes shoes womensClothing jewelry"
+    "mensClothing mensClothing womensClothing jewelry"
     "mensClothing mensClothing womensClothing jewelry";
   padding: 0 5rem;
+}
+
+.categoriesList li {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.categoriesList li:hover {
+  cursor: pointer;
+  transform: scale(1.01);
+}
+
+.categoriesList li:hover .cardHeading {
+  border-color: #fff;
+}
+
+.cardText {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.cardHeading {
+  display: inline-block;
+  font-size: 2rem;
+  border-bottom: 2.5px solid transparent;
+  margin-bottom: 0.5rem;
+  transition: border-bottom 0.3s ease;
+}
+
+.cardAttribution {
+  font-size: 1.1rem;
+}
+
+.cardAttribution a {
+  display: inline;
+  text-decoration: underline;
+  color: #fff;
+}
+
+.cardAttribution a:hover {
+  color: #000;
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.6);;
 }
 
 .shoes {
@@ -33,3 +240,4 @@
   background: url("../../assets/images/womensClothingCategory.jpg") 50% 50% /
     cover no-repeat;
 }
+*/

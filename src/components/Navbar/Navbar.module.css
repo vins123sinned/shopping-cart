@@ -8,6 +8,10 @@
   padding: 1.2rem 1.5rem;
 }
 
+.navbar a {
+  color: #000;
+}
+
 .categoriesList {
   position: absolute;
   top: 4.5rem;
