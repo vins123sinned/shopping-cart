@@ -1,0 +1,35 @@
+.categoriesList {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 200px 200px 200px;
+  grid-template-areas:
+    "shoes shoes womensClothing jewelry"
+    "shoes shoes womensClothing jewelry"
+    "mensClothing mensClothing womensClothing jewelry";
+  padding: 0 5rem;
+}
+
+.shoes {
+  grid-area: shoes;
+  background: url("../../assets/images/shoesCategory.jpg") 0% 30% / cover
+    no-repeat;
+}
+
+.jewelry {
+  grid-area: jewelry;
+  background: url("../../assets/images/jewelryCategory.jpg") right/cover
+    no-repeat;
+}
+
+.mensClothing {
+  grid-area: mensClothing;
+  background: url("../../assets/images/mensClothingCategory.jpg") 50% 15% /
+    cover no-repeat;
+}
+
+.womensClothing {
+  grid-area: womensClothing;
+  background: url("../../assets/images/womensClothingCategory.jpg") 50% 50% /
+    cover no-repeat;
+}
