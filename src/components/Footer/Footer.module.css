@@ -1,0 +1,105 @@
+.footer {
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+  padding: 4rem 2rem 2rem 2rem;
+}
+
+.footerGradient {
+  height: 200px;
+  background: linear-gradient(
+    to bottom,
+    white 0%,
+    #f5f5f5 20%,
+    #ddd 40%,
+    #aaa 60%,
+    #555 80%,
+    black 100%
+  );
+  margin-top: 5rem;
+}
+
+.logo {
+  font-family: "latobold", Arial, Helvetica, sans-serif;
+  font-size: 3rem;
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.6),
+    0 0 20px rgba(255, 255, 255, 0.4),
+    0 0 40px rgba(255, 255, 255, 0.2);
+  margin-bottom: 2rem;
+}
+
+.footerContent {
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.statement {
+  display: none;
+  width: 30%;
+  max-width: 400px;
+}
+
+.statement h4 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.statement p {
+  font-size: 1rem;
+}
+
+.attributions {
+  text-align: center;
+}
+
+.attributionsHeading {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.attribution {
+  margin-bottom: 1rem;
+}
+
+.attribution a {
+  display: inline;
+  text-decoration: underline;
+  color: #fff;
+}
+
+@media (min-width: 800px) {
+  .footerContent {
+    justify-content: space-around;
+  }
+
+  .statement {
+    display: block;
+  }
+
+  .attributions {
+    text-align: left;
+  }
+}
+
+@media (min-width: 1000px) {
+  .statement h4 {
+    font-size: 1.5rem;
+  }
+  
+  .statement p {
+    font-size: 1.15rem;
+  }
+}
+
+@media (min-width: 1250px) {
+  .statement h4 {
+    font-size: 1.75rem;
+  }
+  
+  .statement p {
+    font-size: 1.25rem;
+  }
+}
