@@ -25,8 +25,9 @@ const Navbar = () => {
       <div className={styles.logoContainer}>
         <button
           type="button"
-          className={styles.menuButton}
+          className={styles.categoriesButton}
           onClick={() => setOpenCategories(!openCategories)}
+          aria-label="Categories Menu"
         >
           <span className="material-symbols-outlined">menu</span>
         </button>
