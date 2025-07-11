@@ -1,4 +1,4 @@
-import { Categories } from "../Categories/Categories";
+import { Categories } from "../Categories/Categories.jsx";
 import styles from "./HomePage.module.css";
 
 const HomePage = () => {
