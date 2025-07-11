@@ -9,10 +9,22 @@ describe("Footer component", () => {
   it("Renders correct Footer", () => {
     render(<Footer />);
 
-    expect(screen.getByRole("heading", { name: /VInSION/i })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /An exploration of form, fabric, and future./i })).toBeInTheDocument();
-    expect(screen.getByText(/VInSION is where vision becomes form/i)).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /Image Attribution/i })).toBeInTheDocument();
-    expect(screen.getByText(/© 2025 VInSION. All rights reserved./i)).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: /VInSION/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", {
+        name: /An exploration of form, fabric, and future./i,
+      }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/VInSION is where vision becomes form/i),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: /Image Attribution/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/© 2025 VInSION. All rights reserved./i),
+    ).toBeInTheDocument();
   });
 });
