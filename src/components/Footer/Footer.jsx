@@ -1,20 +1,5 @@
 import styles from "./Footer.module.css";
-
-const Attribution = ({photo, name, link}) => {
-  return (
-    <li className={styles.attribution}>
-      {photo} Photo by{" "}
-      <a
-        href={link}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {name}
-      </a>{" "}
-      on Pexels
-    </li>
-  )
-}
+import { Attribution } from "../Attribution/Attribution.jsx";
 
 const Footer = () => {
   return (
@@ -27,7 +12,6 @@ const Footer = () => {
             <h4>An exploration of form, fabric, and future.</h4>
             <p>Every garment is an expression of restraint, precision, and elevated craftsmanship. Designed to endure beyond seasons, VInSION is where vision becomes form.</p>
           </div>
-          <p></p>
           <aside className={styles.attributions}>
             <h4 className={styles.attributionsHeading}>Image Attributions</h4>
             <ul>
