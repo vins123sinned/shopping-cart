@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach, vi, afterEach } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { Products } from "./Products";
+import userEvent from "@testing-library/user-event";
 
 const mockProducts = [
   {
@@ -62,4 +63,25 @@ describe("Products component", () => {
       expect(screen.getByText(product.description)).toBeInTheDocument();
     });
   });
+
+  it("Shows 'Add to Cart' button on hover", async () => {
+    const user = userEvent.setup();
+
+    fetch.mockResolvedValueOnce({
+      ok: true,
+      json: async () => mockProducts,
+    });
+
+    render(<Products category="all" />);
+
+    const productCard = (await screen.findAllByRole("article"))[0];
+
+    expect(within(productCard).queryByRole("button")).not.toBeInTheDocument();
+
+    await user.hover(productCard);
+
+    expect(within(productCard).getByRole("button")).toBeInTheDocument();
+  });
+
+  it("Adds to cart when button is clicked");
 });

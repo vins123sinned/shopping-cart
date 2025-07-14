@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import styles from "./Products.module.css";
 
 const Products = ({ category }) => {
   const [products, setProducts] = useState(null);
@@ -28,14 +29,17 @@ const Products = ({ category }) => {
   }, []);
 
   return (
-    <section className="products">
+    <section className={styles.products}>
       <h1 className="productsHeading">{category}</h1>
       {loading && <p>Loading...</p>}
       {products &&
         products.map((product) => (
-          <article className="productCard" key={product.id}>
+          <article className={styles.productCard} key={product.id}>
             <h2>{product.title}</h2>
             <p>{product.description}</p>
+            <button type="button" className={styles.addToCart}>
+              Add to Cart
+            </button>
           </article>
         ))}
     </section>

@@ -1,0 +1,11 @@
+.addToCart {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.productCard:hover .addToCart,
+.productCard:focus-within .addToCart {
+  opacity: 1;
+  pointer-events: auto;
+}
