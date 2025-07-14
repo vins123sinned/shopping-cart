@@ -53,18 +53,22 @@ describe("Products component", () => {
 
     const products = await screen.findAllByRole("article");
 
-    expect(screen.getByRole("heading", { name: "all" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /all/i })).toBeInTheDocument();
     expect(products).toHaveLength(mockProducts.length);
 
-    mockProducts.forEach((product) => {
+    for (let i = 0; i < mockProducts.length; i++) {
+      const product = mockProducts[i];
+      const productCard = products[i];
+
+      expect(within(productCard).getByTestId("product-image")).toBeInTheDocument();
       expect(
-        screen.getByRole("heading", { name: product.title }),
+        within(productCard).getByRole("heading", { name: product.title }),
       ).toBeInTheDocument();
-      expect(screen.getByText(product.description)).toBeInTheDocument();
-    });
+      expect(within(productCard).getByText(product.price)).toBeInTheDocument();
+    }
   });
 
-  it("Shows 'Add to Cart' button on hover", async () => {
+  it("Makes 'Add to Cart' button visible on product hover", async () => {
     const user = userEvent.setup();
 
     fetch.mockResolvedValueOnce({
@@ -80,8 +84,6 @@ describe("Products component", () => {
 
     await user.hover(productCard);
 
-    expect(within(productCard).getByRole("button")).toBeInTheDocument();
+    expect(within(productCard).getByRole("button")).toBeVisible();
   });
-
-  it("Adds to cart when button is clicked");
 });

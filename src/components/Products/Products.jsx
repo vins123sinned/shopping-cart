@@ -1,6 +1,31 @@
 import { useEffect, useState } from "react";
 import styles from "./Products.module.css";
 
+const Product = ({ title, price, imageLink, id }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <li key={id}>
+      <article
+        className={styles.productCard}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <img src={imageLink} alt="" data-testid="product-image" />
+        <h2>{title}</h2>
+        <p className={styles.price}>{price}</p>
+        <button
+          type="button"
+          className={styles.addToCart}
+          aria-hidden={!isHovered}
+        >
+          Add to Cart
+        </button>
+      </article>
+    </li>
+  );
+};
+
 const Products = ({ category }) => {
   const [products, setProducts] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -29,19 +54,21 @@ const Products = ({ category }) => {
   }, []);
 
   return (
-    <section className={styles.products}>
-      <h1 className="productsHeading">{category}</h1>
+    <section className={styles.productsSection}>
+      <h1 className={styles.productsHeading}>{category}</h1>
       {loading && <p>Loading...</p>}
-      {products &&
-        products.map((product) => (
-          <article className={styles.productCard} key={product.id}>
-            <h2>{product.title}</h2>
-            <p>{product.description}</p>
-            <button type="button" className={styles.addToCart}>
-              Add to Cart
-            </button>
-          </article>
-        ))}
+      {products && (
+        <ul className={styles.products}>
+          {products.map((product) => (
+            <Product
+              title={product.title}
+              price={product.price}
+              imageLink={product.image}
+              id={product.id}
+            />
+          ))}
+        </ul>
+      )}
     </section>
   );
 };
