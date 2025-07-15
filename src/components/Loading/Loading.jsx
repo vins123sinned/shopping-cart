@@ -8,7 +8,7 @@ const Loading = () => {
         <p>Loading...</p>
       </div>
     </div>
-  )
+  );
 };
 
 export { Loading };

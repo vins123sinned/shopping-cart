@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import styles from "./Products.module.css";
-import { Loading } from "../Loading/Loading";
+import { Loading } from "../Loading/Loading.jsx";
+import { ErrorMessage } from "../ErrorMessage/ErrorMessage.jsx";
 
 function truncateTitle(title, maxChar, suffix = "...") {
   if (!title) return;
-  return title.length > maxChar 
+  return title.length > maxChar
     ? title.slice(0, maxChar).trim() + suffix
     : title;
 }
@@ -52,7 +53,7 @@ const Products = ({ category }) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("https://fakestoreapi.com/products");
+        const response = await fetch("https://fakestoreapi.com/productasds");
         if (!response.ok) {
           throw new Error(`HTTP error: Status ${response.status}`);
         }
@@ -71,12 +72,11 @@ const Products = ({ category }) => {
     fetchProducts();
   }, []);
 
-  // work on error and loading components (easy)
-  // perfection si da enemy of progress, you got this!
   return (
     <section className={styles.productsSection}>
       <h1 className={styles.productsHeading}>{category}</h1>
       {loading && <Loading />}
+      {error && <ErrorMessage message={error} />}
       {products && (
         <ul className={styles.products}>
           {products.map((product) => (

@@ -66,7 +66,9 @@ describe("Products component", () => {
       expect(
         within(productCard).getByRole("heading", { name: product.title }),
       ).toBeInTheDocument();
-      expect(within(productCard).getByText(/\S?\d+\.\d{2}/)).toBeInTheDocument();
+      expect(
+        within(productCard).getByText(/\S?\d+\.\d{2}/),
+      ).toBeInTheDocument();
     }
   });
 
