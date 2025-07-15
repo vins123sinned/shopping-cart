@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <Products category={"All Products"}/>
+      <Products category={"All Products"} />
       <Footer />
     </>
   );

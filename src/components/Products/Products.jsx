@@ -8,7 +8,11 @@ function truncateTitle(title, maxChar, suffix = "...") {
     : title;
 }
 
-const Product = ({ title, price, imageLink, id }) => {
+function formatPrice(price) {
+  return Number(price).toFixed(2);
+}
+
+const Product = ({ title, price, imageLink }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -26,7 +30,7 @@ const Product = ({ title, price, imageLink, id }) => {
           className={styles.productImage}
         />
         <h2 className={styles.productTitle}>{truncateTitle(title, 50)}</h2>
-        <p className={styles.price}>${price}</p>
+        <p className={styles.price}>${formatPrice(price)}</p>
         <button
           type="button"
           className={styles.addToCart}
@@ -66,6 +70,8 @@ const Products = ({ category }) => {
     fetchProducts();
   }, []);
 
+  // work on error and loading components (easy)
+  // perfection si da enemy of progress, you got this!
   return (
     <section className={styles.productsSection}>
       <h1 className={styles.productsHeading}>{category}</h1>

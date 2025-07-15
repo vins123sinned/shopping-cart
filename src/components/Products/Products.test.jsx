@@ -60,11 +60,13 @@ describe("Products component", () => {
       const product = mockProducts[i];
       const productCard = products[i];
 
-      expect(within(productCard).getByTestId("product-image")).toBeInTheDocument();
+      expect(
+        within(productCard).getByTestId("product-image"),
+      ).toBeInTheDocument();
       expect(
         within(productCard).getByRole("heading", { name: product.title }),
       ).toBeInTheDocument();
-      expect(within(productCard).getByText(product.price)).toBeInTheDocument();
+      expect(within(productCard).getByText(/\S?\d+\.\d{2}/)).toBeInTheDocument();
     }
   });
 
