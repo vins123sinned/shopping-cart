@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 import styles from "./Products.module.css";
 
+function truncateTitle(title, maxChar, suffix = "...") {
+  if (!title) return;
+  return title.length > maxChar 
+    ? title.slice(0, maxChar).trim() + suffix
+    : title;
+}
+
 const Product = ({ title, price, imageLink, id }) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -18,7 +25,7 @@ const Product = ({ title, price, imageLink, id }) => {
           data-testid="product-image"
           className={styles.productImage}
         />
-        <h2 className={styles.productTitle}>{title}</h2>
+        <h2 className={styles.productTitle}>{truncateTitle(title, 50)}</h2>
         <p className={styles.price}>${price}</p>
         <button
           type="button"
