@@ -5,15 +5,21 @@ const Product = ({ title, price, imageLink, id }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <li key={id}>
+    <li>
       <article
         className={styles.productCard}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <img src={imageLink} alt="" data-testid="product-image" />
-        <h2>{title}</h2>
-        <p className={styles.price}>{price}</p>
+        <img
+          src={imageLink}
+          alt=""
+          height="300"
+          data-testid="product-image"
+          className={styles.productImage}
+        />
+        <h2 className={styles.productTitle}>{title}</h2>
+        <p className={styles.price}>${price}</p>
         <button
           type="button"
           className={styles.addToCart}
@@ -64,7 +70,7 @@ const Products = ({ category }) => {
               title={product.title}
               price={product.price}
               imageLink={product.image}
-              id={product.id}
+              key={product.id}
             />
           ))}
         </ul>
