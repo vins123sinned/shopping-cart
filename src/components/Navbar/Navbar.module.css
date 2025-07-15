@@ -48,12 +48,12 @@
   margin-right: 0.5rem;
 }
 
-.menuButton span {
+.categoriesButton span {
   position: relative;
   top: 0.13rem;
 }
 
-.menuButton:hover {
+.categoriesButton:hover {
   cursor: pointer;
   background-color: #e4e4e4;
   border-radius: 5px;
@@ -72,7 +72,7 @@
   font-size: 1.5rem;
 }
 
-@media (min-width: 560px) and (max-width: 900px) {
+@media (min-width: 560px) and (max-width: 1000px) {
   .logo {
     position: absolute;
     left: 50%;
@@ -84,7 +84,7 @@
   }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1000px) {
   .navbar {
     padding: 1rem 2.5rem;
   }
@@ -104,7 +104,7 @@
     padding: 0;
   }
 
-  .menuButton {
+  .categoriesButton {
     display: none;
   }
 

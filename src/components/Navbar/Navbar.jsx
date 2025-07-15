@@ -7,7 +7,7 @@ const Navbar = () => {
 
   // check media to show correct categories list
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(min-width: 900px");
+    const mediaQuery = window.matchMedia("(min-width: 1000px");
 
     const handleChange = (event) => setOpenCategories(event.matches);
     // initial check
