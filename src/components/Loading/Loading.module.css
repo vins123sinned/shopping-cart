@@ -1,0 +1,30 @@
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  max-height: 800px;
+}
+
+.spinner {
+  width: 3.5rem;
+  height: 3.5rem;
+  border: 5px solid #ccc;
+  border-top: 6px solid #333;
+  border-radius: 50%;
+  margin: 0.5rem auto;
+  animation: rotation 0.8s linear infinite;
+}
+
+.loadingContainer p {
+  font-size: 1.25rem;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

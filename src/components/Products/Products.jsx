@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./Products.module.css";
+import { Loading } from "../Loading/Loading";
 
 function truncateTitle(title, maxChar, suffix = "...") {
   if (!title) return;
@@ -75,7 +76,7 @@ const Products = ({ category }) => {
   return (
     <section className={styles.productsSection}>
       <h1 className={styles.productsHeading}>{category}</h1>
-      {loading && <p>Loading...</p>}
+      {loading && <Loading />}
       {products && (
         <ul className={styles.products}>
           {products.map((product) => (
