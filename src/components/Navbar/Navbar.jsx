@@ -38,16 +38,19 @@ const Navbar = () => {
       {openCategories && (
         <ul className={styles.categoriesList}>
           <li>
-            <Link to="">Men's Clothing</Link>
+            <Link to="shop">Products</Link>
           </li>
           <li>
-            <Link to="">Women's Clothing</Link>
+            <Link to="shop/category/mens-clothing">Men's Clothing</Link>
           </li>
           <li>
-            <Link to="">Jewelry</Link>
+            <Link to="shop/category/womens-clothing">Women's Clothing</Link>
           </li>
           <li>
-            <Link to="">Electronics</Link>
+            <Link to="shop/category/jewelry">Jewelry</Link>
+          </li>
+          <li>
+            <Link to="shop/category/electronics">Electronics</Link>
           </li>
         </ul>
       )}
