@@ -73,15 +73,9 @@ function useFetchProducts(category) {
 }
 
 const Product = ({ title, price, imageLink }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
   return (
     <li>
-      <article
-        className={styles.productCard}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
+      <article className={styles.productCard}>
         <img
           src={imageLink}
           alt=""
@@ -91,11 +85,7 @@ const Product = ({ title, price, imageLink }) => {
         />
         <h2 className={styles.productTitle}>{truncateTitle(title, 50)}</h2>
         <p className={styles.price}>${formatPrice(price)}</p>
-        <button
-          type="button"
-          className={styles.addToCart}
-          aria-hidden={!isHovered}
-        >
+        <button type="button" className={styles.addToCart}>
           Add to Cart
         </button>
       </article>
