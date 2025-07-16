@@ -15,6 +15,63 @@ function formatPrice(price) {
   return Number(price).toFixed(2);
 }
 
+function useFetchProducts(category) {
+  const [products, setProducts] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+
+    const fetchProducts = async () => {
+      // could also use a wrapper when code gets more complex (see: key identities)
+      setProducts(null);
+      setLoading(true);
+      setError(null);
+
+      const categoryEndpointMap = {
+        "mens-clothing": "men%27s%20clothing",
+        "womens-clothing": "women%27s%20clothing",
+        jewelry: "jewelery",
+        electronics: "electronics",
+      };
+
+      const url = category
+        ? `https://fakestoreapi.com/products/category/${categoryEndpointMap[category]}`
+        : "https://fakestoreapi.com/products";
+
+      try {
+        const response = await fetch(url, { signal });
+        if (!response.ok) {
+          throw new Error(`HTTP error: Status ${response.status}`);
+        }
+
+        const productsData = await response.json();
+        setProducts(productsData);
+        setError(null);
+      } catch (error) {
+        if (error.name === "AbortError") {
+          console.log("Aborted!");
+        } else {
+          setError(error.message);
+          setProducts(null);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+
+    return () => {
+      controller.abort();
+    };
+  }, [category]);
+
+  return { products, loading, error };
+}
+
 const Product = ({ title, price, imageLink }) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -48,10 +105,7 @@ const Product = ({ title, price, imageLink }) => {
 
 const Products = () => {
   const { category } = useParams();
-
-  const [products, setProducts] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { products, loading, error } = useFetchProducts(category);
 
   const categoryHeadingMap = {
     "mens-clothing": "Men's Clothing",
@@ -61,39 +115,6 @@ const Products = () => {
   };
 
   const heading = category ? categoryHeadingMap[category] : null;
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const categoryEndpointMap = {
-          "mens-clothing": "men%27s%20clothing",
-          "womens-clothing": "women%27s%20clothing",
-          jewelry: "jewelery",
-          electronics: "electronics",
-        };
-
-        const url = category
-          ? `https://fakestoreapi.com/products/category/${categoryEndpointMap[category]}`
-          : "https://fakestoreapi.com/products";
-
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error(`HTTP error: Status ${response.status}`);
-        }
-
-        const productsData = await response.json();
-        setProducts(productsData);
-        setError(null);
-      } catch (error) {
-        setError(error.message);
-        setProducts(null);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
-  }, [category]);
 
   return (
     <section className={styles.productsSection}>
