@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./Products.module.css";
 import { Loading } from "../Loading/Loading.jsx";
 import { ErrorMessage } from "../ErrorMessage/ErrorMessage.jsx";
+import { useParams } from "react-router-dom";
 
 function truncateTitle(title, maxChar, suffix = "...") {
   if (!title) return;
@@ -45,15 +46,37 @@ const Product = ({ title, price, imageLink }) => {
   );
 };
 
-const Products = ({ category }) => {
+const Products = () => {
+  const { category } = useParams();
+
   const [products, setProducts] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const categoryHeadingMap = {
+    "mens-clothing": "Men's Clothing",
+    "womens-clothing": "Women's Clothing",
+    jewelry: "Jewelry",
+    electronics: "Electronics",
+  };
+
+  const heading = category ? categoryHeadingMap[category] : null;
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("https://fakestoreapi.com/productasds");
+        const categoryEndpointMap = {
+          "mens-clothing": "men%27s%20clothing",
+          "womens-clothing": "women%27s%20clothing",
+          jewelry: "jewelery",
+          electronics: "electronics",
+        };
+
+        const url = category
+          ? `https://fakestoreapi.com/products/category/${categoryEndpointMap[category]}`
+          : "https://fakestoreapi.com/products";
+
+        const response = await fetch(url);
         if (!response.ok) {
           throw new Error(`HTTP error: Status ${response.status}`);
         }
@@ -70,11 +93,11 @@ const Products = ({ category }) => {
     };
 
     fetchProducts();
-  }, []);
+  }, [category]);
 
   return (
     <section className={styles.productsSection}>
-      <h1 className={styles.productsHeading}>{category}</h1>
+      <h1 className={styles.productsHeading}>{heading || "All Products"}</h1>
       {loading && <Loading />}
       {error && <ErrorMessage message={error} />}
       {products && (
