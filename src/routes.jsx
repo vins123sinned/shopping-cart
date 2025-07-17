@@ -12,7 +12,7 @@ const routes = [
       { index: true, element: <HomePage /> },
       { path: "shop", element: <Products /> },
       { path: "shop/category/:category", element: <Products /> },
-      { path: "shop/product/:product", element: <Product /> },
+      { path: "shop/product/:productId", element: <Product /> },
     ],
   },
 ];
