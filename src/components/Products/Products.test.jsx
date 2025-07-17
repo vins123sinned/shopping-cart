@@ -1,7 +1,6 @@
 import { describe, it, expect, beforeEach, vi, afterEach } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import { Products } from "./Products";
-import userEvent from "@testing-library/user-event";
 
 const mockProducts = [
   {
@@ -72,9 +71,7 @@ describe("Products component", () => {
     }
   });
 
-  it("Makes 'Add to Cart' button visible on product hover", async () => {
-    const user = userEvent.setup();
-
+  it("'Add to Cart' button is visible to screen and visible users", async () => {
     fetch.mockResolvedValueOnce({
       ok: true,
       json: async () => mockProducts,
@@ -83,11 +80,8 @@ describe("Products component", () => {
     render(<Products category="all" />);
 
     const productCard = (await screen.findAllByRole("article"))[0];
+    const button = within(productCard).getByRole("button");
 
-    expect(within(productCard).queryByRole("button")).not.toBeInTheDocument();
-
-    await user.hover(productCard);
-
-    expect(within(productCard).getByRole("button")).toBeVisible();
+    expect(button).toBeVisible();
   });
 });

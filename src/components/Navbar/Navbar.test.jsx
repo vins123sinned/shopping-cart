@@ -34,6 +34,9 @@ describe("Navigation component", () => {
       screen.getByRole("link", { name: /^VInSION$/i }),
     ).toBeInTheDocument();
     expect(
+      screen.getByRole("link", { name: /^Products$/i }),
+    ).toBeInTheDocument();
+    expect(
       screen.getByRole("link", { name: /^Men's Clothing$/i }),
     ).toBeInTheDocument();
     expect(
@@ -75,7 +78,7 @@ describe("Navigation component", () => {
     await user.click(categoriesMenu);
 
     links = screen.getAllByRole("link");
-    expect(links.length).toBe(6);
+    expect(links.length).toBe(7);
 
     expect(
       screen.getByRole("link", { name: /^Men's Clothing$/i }),
