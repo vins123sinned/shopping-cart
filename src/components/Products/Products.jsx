@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./Products.module.css";
 import { Loading } from "../Loading/Loading.jsx";
 import { ErrorMessage } from "../ErrorMessage/ErrorMessage.jsx";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function truncateTitle(title, maxChar, suffix = "...") {
   if (!title) return;
@@ -72,18 +72,20 @@ function useFetchProducts(category) {
   return { products, loading, error };
 }
 
-const Product = ({ title, price, imageLink }) => {
+const ProductCard = ({ title, price, imageLink, id }) => {
   return (
     <li>
       <article className={styles.productCard}>
-        <img
-          src={imageLink}
-          alt=""
-          height="300"
-          data-testid="product-image"
-          className={styles.productImage}
-        />
-        <h2 className={styles.productTitle}>{truncateTitle(title, 50)}</h2>
+        <Link to={`/shop/product/${id}`} className={styles.linkContainer}>
+          <img
+            src={imageLink}
+            alt=""
+            height="300"
+            data-testid="product-image"
+            className={styles.productImage}
+          />
+          <h2 className={styles.productTitle}>{truncateTitle(title, 50)}</h2>
+        </Link>
         <p className={styles.price}>${formatPrice(price)}</p>
         <button type="button" className={styles.addToCart}>
           Add to Cart
@@ -114,10 +116,11 @@ const Products = () => {
       {products && (
         <ul className={styles.products}>
           {products.map((product) => (
-            <Product
+            <ProductCard
               title={product.title}
               price={product.price}
               imageLink={product.image}
+              id={product.id}
               key={product.id}
             />
           ))}

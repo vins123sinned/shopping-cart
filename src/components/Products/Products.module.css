@@ -21,6 +21,10 @@
   padding: 3rem 1.5rem;
 }
 
+.linkContainer {
+  color: #000;
+}
+
 .productImage {
   display: block;
   max-width: 100%;
