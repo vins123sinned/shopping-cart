@@ -38,19 +38,41 @@ const Navbar = () => {
       {openCategories && (
         <ul className={styles.categoriesList}>
           <li>
-            <Link to="shop">Products</Link>
+            <Link to="shop" onClick={() => setOpenCategories(false)}>
+              Products
+            </Link>
           </li>
           <li>
-            <Link to="shop/category/mens-clothing">Men's Clothing</Link>
+            <Link
+              to="shop/category/mens-clothing"
+              onClick={() => setOpenCategories(false)}
+            >
+              Men's Clothing
+            </Link>
           </li>
           <li>
-            <Link to="shop/category/womens-clothing">Women's Clothing</Link>
+            <Link
+              to="shop/category/womens-clothing"
+              onClick={() => setOpenCategories(false)}
+            >
+              Women's Clothing
+            </Link>
           </li>
           <li>
-            <Link to="shop/category/jewelry">Jewelry</Link>
+            <Link
+              to="shop/category/jewelry"
+              onClick={() => setOpenCategories(false)}
+            >
+              Jewelry
+            </Link>
           </li>
           <li>
-            <Link to="shop/category/electronics">Electronics</Link>
+            <Link
+              to="shop/category/electronics"
+              onClick={() => setOpenCategories(false)}
+            >
+              Electronics
+            </Link>
           </li>
         </ul>
       )}

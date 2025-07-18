@@ -1,19 +1,9 @@
 import { useEffect, useState } from "react";
-import styles from "./Products.module.css";
+import { Link, useParams } from "react-router-dom";
+import { truncateTitle, formatPrice } from "../../utils.js";
 import { Loading } from "../Loading/Loading.jsx";
 import { ErrorMessage } from "../ErrorMessage/ErrorMessage.jsx";
-import { Link, useParams } from "react-router-dom";
-
-function truncateTitle(title, maxChar, suffix = "...") {
-  if (!title) return;
-  return title.length > maxChar
-    ? title.slice(0, maxChar).trim() + suffix
-    : title;
-}
-
-function formatPrice(price) {
-  return Number(price).toFixed(2);
-}
+import styles from "./Products.module.css";
 
 function useFetchProducts(category) {
   const [products, setProducts] = useState(null);

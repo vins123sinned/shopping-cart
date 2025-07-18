@@ -1,8 +1,10 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { formatPrice } from "../../utils.js";
+import { Loading } from "../Loading/Loading.jsx";
+import { ErrorMessage } from "../ErrorMessage/ErrorMessage.jsx";
+import { Quantity } from "../Quantity/Quantity.jsx";
 import styles from "./Product.module.css";
-import { Loading } from "../Loading/Loading";
-import { ErrorMessage } from "../ErrorMessage/ErrorMessage";
 
 function useFetchProduct(productId) {
   const [product, setProduct] = useState(null);
@@ -50,63 +52,6 @@ function useFetchProduct(productId) {
   return { product, loading, error };
 }
 
-const Quantity = () => {
-  // when already in cart, update button to update cart!
-  const [quantity, setQuantity] = useState(1);
-  const minQuantity = 0;
-  const maxQuantity = 100;
-
-  const handleChange = (event) => {
-    const value = event.target.value;
-
-    if (value === "") return setQuantity("");
-    if (!/^\d+$/.test(value)) return;
-
-    if (Number(value) <= maxQuantity) {
-      const cleanedValue = value.replace(/^0+(?!$)/, "");
-      setQuantity(cleanedValue);
-    }
-  };
-
-  const subtractQuantity = () => {
-    const newValue = Number(quantity) - 1;
-    if (newValue < minQuantity) return;
-
-    setQuantity(newValue);
-  };
-
-  const addQuantity = () => {
-    const newValue = Number(quantity) + 1;
-    if (newValue > maxQuantity) return;
-
-    setQuantity(newValue);
-  }
-
-  return (
-    <>
-      <label htmlFor="quantity">Quantity</label>
-      <div>
-        <button type="button" onClick={subtractQuantity}>
-          <span className="material-symbols-outlined">remove</span>
-        </button>
-        <input
-          type="text"
-          id="quantity"
-          min="0"
-          max={maxQuantity}
-          value={quantity}
-          onChange={handleChange}
-        />
-        <button type="button" onClick={addQuantity}>
-          <span className="material-symbols-outlined">add</span>
-        </button>
-      </div>
-
-      <button type="button">Add to Cart</button>
-    </>
-  );
-};
-
 const Product = () => {
   const { productId } = useParams();
   const { product, loading, error } = useFetchProduct(productId);
@@ -137,17 +82,19 @@ const Product = () => {
             height="500"
             className={styles.productImage}
           />
-          <div className="productInformation">
+          <div className={styles.productInformation}>
             <Link
               to={`/shop/category/${productLinkMap[product.category]}`}
               role="region"
+              className={styles.categoryLink}
             >
               {productHeadingMap[product.category]}
             </Link>
-            <h1>{product.title}</h1>
-            <p className="price">{product.price}</p>
-            <p>{product.description}</p>
+            <h1 className={styles.productTitle}>{product.title}</h1>
+            <p className={styles.price}>${formatPrice(product.price)}</p>
+            <p className={styles.description}>{product.description}</p>
             <Quantity />
+            <button type="button">Add to Cart</button>
           </div>
         </section>
       )}
