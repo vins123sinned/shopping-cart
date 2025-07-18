@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach, vi, afterEach } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import { Products } from "./Products";
+import { MemoryRouter } from "react-router-dom";
 
 const mockProducts = [
   {
@@ -48,7 +49,11 @@ describe("Products component", () => {
       json: async () => mockProducts,
     });
 
-    render(<Products category="all" />);
+    render(
+      <MemoryRouter>
+        <Products category="all" />
+      </MemoryRouter>,
+    );
 
     const products = await screen.findAllByRole("article");
 
@@ -77,7 +82,11 @@ describe("Products component", () => {
       json: async () => mockProducts,
     });
 
-    render(<Products category="all" />);
+    render(
+      <MemoryRouter>
+        <Products category="all" />
+      </MemoryRouter>,
+    );
 
     const productCard = (await screen.findAllByRole("article"))[0];
     const button = within(productCard).getByRole("button");
