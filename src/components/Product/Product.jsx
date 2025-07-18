@@ -52,13 +52,54 @@ function useFetchProduct(productId) {
 
 const Quantity = () => {
   // when already in cart, update button to update cart!
+  const [quantity, setQuantity] = useState(1);
+  const minQuantity = 0;
+  const maxQuantity = 100;
+
+  const handleChange = (event) => {
+    const value = event.target.value;
+
+    if (value === "") return setQuantity("");
+    if (!/^\d+$/.test(value)) return;
+
+    if (Number(value) <= maxQuantity) {
+      const cleanedValue = value.replace(/^0+(?!$)/, "");
+      setQuantity(cleanedValue);
+    }
+  };
+
+  const subtractQuantity = () => {
+    const newValue = Number(quantity) - 1;
+    if (newValue < minQuantity) return;
+
+    setQuantity(newValue);
+  };
+
+  const addQuantity = () => {
+    const newValue = Number(quantity) + 1;
+    if (newValue > maxQuantity) return;
+
+    setQuantity(newValue);
+  }
+
   return (
     <>
-      <label for="quantity">Quantity</label>
+      <label htmlFor="quantity">Quantity</label>
       <div>
-        <button type="button">Subtract</button>
-        <input type="number" id="quantity" max="100" />
-        <button type="button">Add</button>
+        <button type="button" onClick={subtractQuantity}>
+          <span className="material-symbols-outlined">remove</span>
+        </button>
+        <input
+          type="text"
+          id="quantity"
+          min="0"
+          max={maxQuantity}
+          value={quantity}
+          onChange={handleChange}
+        />
+        <button type="button" onClick={addQuantity}>
+          <span className="material-symbols-outlined">add</span>
+        </button>
       </div>
 
       <button type="button">Add to Cart</button>
@@ -85,11 +126,11 @@ const Product = () => {
   };
 
   return (
-    <section className={styles.product}>
+    <section className={styles.productSection} data-testid="product-section">
       {loading && <Loading />}
       {error && <ErrorMessage message={error} />}
       {product && (
-        <>
+        <section className={styles.product}>
           <img
             src={product.image}
             alt="Product Image"
@@ -108,7 +149,7 @@ const Product = () => {
             <p>{product.description}</p>
             <Quantity />
           </div>
-        </>
+        </section>
       )}
     </section>
   );
