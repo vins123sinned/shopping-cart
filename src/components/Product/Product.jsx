@@ -94,7 +94,9 @@ const Product = () => {
             <p className={styles.price}>${formatPrice(product.price)}</p>
             <p className={styles.description}>{product.description}</p>
             <Quantity />
-            <button type="button" className={styles.addToCart}>Add to Cart</button>
+            <button type="button" className={styles.addToCart}>
+              Add to Cart
+            </button>
           </div>
         </section>
       )}

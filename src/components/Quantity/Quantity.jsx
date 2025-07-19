@@ -35,7 +35,9 @@ const Quantity = () => {
 
   return (
     <>
-      <label htmlFor="quantity" className={styles.quantityLabel}>Quantity</label>
+      <label htmlFor="quantity" className={styles.quantityLabel}>
+        Quantity
+      </label>
       <div className={styles.quantityContainer}>
         <button
           type="button"

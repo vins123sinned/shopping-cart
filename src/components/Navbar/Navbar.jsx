@@ -23,7 +23,7 @@ const Navbar = () => {
   const linkClicked = () => {
     const mediaQuery = window.matchMedia("(min-width: 1000px");
     if (!mediaQuery.matches) setOpenCategories(false);
-  }
+  };
 
   return (
     <nav className={styles.navbar}>
@@ -48,34 +48,22 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link
-              to="shop/category/mens-clothing"
-              onClick={linkClicked}
-            >
+            <Link to="shop/category/mens-clothing" onClick={linkClicked}>
               Men's Clothing
             </Link>
           </li>
           <li>
-            <Link
-              to="shop/category/womens-clothing"
-              onClick={linkClicked}
-            >
+            <Link to="shop/category/womens-clothing" onClick={linkClicked}>
               Women's Clothing
             </Link>
           </li>
           <li>
-            <Link
-              to="shop/category/jewelry"
-              onClick={linkClicked}
-            >
+            <Link to="shop/category/jewelry" onClick={linkClicked}>
               Jewelry
             </Link>
           </li>
           <li>
-            <Link
-              to="shop/category/electronics"
-              onClick={linkClicked}
-            >
+            <Link to="shop/category/electronics" onClick={linkClicked}>
               Electronics
             </Link>
           </li>
