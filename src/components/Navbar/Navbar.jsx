@@ -20,6 +20,11 @@ const Navbar = () => {
     };
   }, []);
 
+  const linkClicked = () => {
+    const mediaQuery = window.matchMedia("(min-width: 1000px");
+    if (!mediaQuery.matches) setOpenCategories(false);
+  }
+
   return (
     <nav className={styles.navbar}>
       <div className={styles.logoContainer}>
@@ -38,14 +43,14 @@ const Navbar = () => {
       {openCategories && (
         <ul className={styles.categoriesList}>
           <li>
-            <Link to="shop" onClick={() => setOpenCategories(false)}>
+            <Link to="shop" onClick={linkClicked}>
               Products
             </Link>
           </li>
           <li>
             <Link
               to="shop/category/mens-clothing"
-              onClick={() => setOpenCategories(false)}
+              onClick={linkClicked}
             >
               Men's Clothing
             </Link>
@@ -53,7 +58,7 @@ const Navbar = () => {
           <li>
             <Link
               to="shop/category/womens-clothing"
-              onClick={() => setOpenCategories(false)}
+              onClick={linkClicked}
             >
               Women's Clothing
             </Link>
@@ -61,7 +66,7 @@ const Navbar = () => {
           <li>
             <Link
               to="shop/category/jewelry"
-              onClick={() => setOpenCategories(false)}
+              onClick={linkClicked}
             >
               Jewelry
             </Link>
@@ -69,7 +74,7 @@ const Navbar = () => {
           <li>
             <Link
               to="shop/category/electronics"
-              onClick={() => setOpenCategories(false)}
+              onClick={linkClicked}
             >
               Electronics
             </Link>
