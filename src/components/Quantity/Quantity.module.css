@@ -37,3 +37,9 @@
   max-width: 4rem;
   padding: 0.25rem;
 }
+
+@media (min-width: 800px) {
+  .quantityContainer {
+    margin: 1.5rem 0;
+  }
+}
