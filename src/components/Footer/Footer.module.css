@@ -31,9 +31,23 @@
 
 .footerContent {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   text-align: left;
   margin-bottom: 2rem;
+}
+
+.footerContent h4 {
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  margin-bottom: 0.5rem;
+}
+
+.footerContent p {
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  line-height: 1.5;
+  overflow-wrap: break-word;
+  max-width: 60ch;
+  margin: 0 auto;
 }
 
 .statement {
@@ -42,34 +56,49 @@
   max-width: 400px;
 }
 
-.statement h4 {
-  font-size: clamp(1.25rem, 2vw, 1.75rem);
-  margin-bottom: 0.5rem;
+.apiCredit {
+  margin-bottom: 2rem;
 }
 
-.statement p {
-  font-size: clamp(1rem, 2vw, 1.1rem);
+.apiCredit a {
+  display: inline;
+  color: #fff;
+  text-decoration: underline;
 }
 
+.apiCredit,
 .attributions {
   text-align: center;
 }
 
-.attributionsHeading {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-
 @media (min-width: 800px) {
   .footerContent {
+    flex-direction: row;
     justify-content: space-around;
   }
 
-  .statement {
-    display: block;
+  .footerContent p {
+    max-width: 400px;
+    margin: 0;
+  }
+
+  .footerContent div,
+  .footerContent p {
+    text-align: left;
+  }
+
+  .apiCredit {
+    margin-right: 1rem;
   }
 
   .attributions {
     text-align: left;
+  }
+}
+
+@media (min-width: 1300px) {
+  .statement {
+    display: block;
+    margin-right: 1rem;
   }
 }
