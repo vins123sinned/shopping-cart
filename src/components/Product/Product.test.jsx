@@ -4,6 +4,8 @@ import { Product } from "./Product.jsx";
 import { MemoryRouter } from "react-router-dom";
 import { act } from "react";
 
+vi.mock("../Quantity/Quantity.jsx");
+
 const mockProduct = {
   id: 9,
   title: "Placeholder Super Ultra Pro Max HD 123GB MODEL 1x2w3ecasdn",
@@ -30,26 +32,30 @@ describe("Product component", () => {
     });
 
     act(() => {
-      render(<MemoryRouter>
-        <Product />
-      </MemoryRouter>);
+      render(
+        <MemoryRouter>
+          <Product />
+        </MemoryRouter>,
+      );
     });
 
     screen.debug();
 
     const productSection = await screen.findByTestId("product-section");
 
-    expect(within(productSection).getByAltText("Product Image")).toBeInTheDocument();
     expect(
-      within(productSection).getByText(/Jewelry/i),
+      within(productSection).getByAltText("Product Image"),
     ).toBeInTheDocument();
+    expect(within(productSection).getByText(/Jewelry/i)).toBeInTheDocument();
     expect(
       within(productSection).getByRole("heading", { name: mockProduct.title }),
     ).toBeInTheDocument();
     expect(
       within(productSection).getByText(new RegExp(mockProduct.price, "i")),
     ).toBeInTheDocument();
-    expect(within(productSection).getByText(mockProduct.description)).toBeInTheDocument();
+    expect(
+      within(productSection).getByText(mockProduct.description),
+    ).toBeInTheDocument();
 
     // Quantity component when finished
   });

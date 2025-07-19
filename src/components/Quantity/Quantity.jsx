@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "./Quantity.module.css";
 
 const Quantity = () => {
   // when already in cart, update button to update cart!
@@ -34,12 +35,13 @@ const Quantity = () => {
 
   return (
     <>
-      <label htmlFor="quantity">Quantity</label>
-      <div>
+      <label htmlFor="quantity" className={styles.quantityLabel}>Quantity</label>
+      <div className={styles.quantityContainer}>
         <button
           type="button"
           onClick={subtractQuantity}
           aria-label="Decrease quantity"
+          className={styles.quantityButton}
         >
           <span className="material-symbols-outlined" aria-hidden="true">
             remove
@@ -52,11 +54,13 @@ const Quantity = () => {
           max={maxQuantity}
           value={quantity}
           onChange={handleChange}
+          className={styles.quantityInput}
         />
         <button
           type="button"
           onClick={addQuantity}
           aria-label="Increase quantity"
+          className={styles.quantityButton}
         >
           <span className="material-symbols-outlined" aria-hidden="true">
             add
