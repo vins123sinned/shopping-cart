@@ -9,6 +9,12 @@
   cursor: pointer;
 }
 
+.heroLink {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .textContainer {
   position: absolute;
   left: 50%;

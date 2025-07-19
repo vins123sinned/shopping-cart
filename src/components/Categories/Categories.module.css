@@ -51,8 +51,8 @@
   font-size: 1.1rem;
 }
 
-.shoes {
-  background: url("../../assets/images/shoesCategory.jpg") 0% 30% / cover
+.electronics {
+  background: url("../../assets/images/electronicsCategory.jpg") bottom / cover
     no-repeat;
 }
 
@@ -71,6 +71,12 @@
     cover no-repeat;
 }
 
+.categoryLink {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
 @media (min-width: 500px) {
   .categoriesList {
     padding: 0 3rem;
@@ -82,8 +88,8 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 200px 100px 100px 200px;
     grid-template-areas:
-      "shoes shoes womensClothing jewelry"
-      "shoes shoes womensClothing jewelry"
+      "electronics electronics womensClothing jewelry"
+      "electronics electronics womensClothing jewelry"
       "mensClothing mensClothing womensClothing jewelry"
       "mensClothing mensClothing womensClothing jewelry";
     padding: 0 1rem;
@@ -94,8 +100,8 @@
     max-height: none;
   }
 
-  .shoes {
-    grid-area: shoes;
+  .electronics {
+    grid-area: electronics;
   }
 
   .jewelry {
