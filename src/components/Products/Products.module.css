@@ -23,6 +23,11 @@
 
 .linkContainer {
   color: #000;
+  margin-bottom: 2.5rem;
+}
+
+.linkContainer:hover h2 {
+  color: #424242;
 }
 
 .productImage {
@@ -34,7 +39,6 @@
 
 .productTitle {
   font-size: 1.3rem;
-  margin-bottom: 2.5rem;
   max-height: 6.5rem;
 }
 

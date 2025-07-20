@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link, useOutletContext, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { truncateTitle, formatPrice } from "../../utils.js";
 import { Loading } from "../Loading/Loading.jsx";
 import { ErrorMessage } from "../ErrorMessage/ErrorMessage.jsx";
 import { AddToCart } from "../AddToCart/AddToCart.jsx";
 import styles from "./Products.module.css";
+import { Quantity } from "../Quantity/Quantity.jsx";
 
 function useFetchProducts(category) {
   const [products, setProducts] = useState(null);
@@ -64,9 +65,6 @@ function useFetchProducts(category) {
 }
 
 const ProductCard = ({ title, price, imageLink, id }) => {
-  const [cart] = useOutletContext();
-  const isInCart = cart.find((item) => item.id === id);
-
   return (
     <li>
       <article className={styles.productCard}>
@@ -81,13 +79,13 @@ const ProductCard = ({ title, price, imageLink, id }) => {
           <h2 className={styles.productTitle}>{truncateTitle(title, 50)}</h2>
         </Link>
         <p className={styles.price}>${formatPrice(price)}</p>
-        {isInCart && <p>Is In Cart</p>}
         <AddToCart 
           className={styles.addToCart}  
           id={id}
           title={title}
           price={price}
           imageLink={imageLink}
+          quantity={1}
         />
       </article>
     </li>
@@ -108,7 +106,7 @@ const Products = () => {
   const heading = category ? categoryHeadingMap[category] : null;
 
   return (
-    <section className={styles.productsSection}>
+    <section className={`${styles.productsSection} mainSection`}>
       <h1 className={styles.productsHeading}>{heading || "All Products"}</h1>
       {loading && <Loading />}
       {error && <ErrorMessage message={error} />}

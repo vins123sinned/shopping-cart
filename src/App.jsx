@@ -13,11 +13,11 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart])
+  }, [cart]);
 
   return (
     <>
-      <Navbar />
+      <Navbar cart={cart} />
       <Outlet context={[cart, setCart]} />
       <Footer />
     </>

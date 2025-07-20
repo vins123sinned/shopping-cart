@@ -1,11 +1,14 @@
 .navbar {
   font-family: "latobold", Arial, Helvetica, sans-serif;
+  position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
-  padding: 1.2rem 1.5rem;
+  padding: 1rem 1.5rem;
+  z-index: 999;
 }
 
 .navbar a {
@@ -62,10 +65,41 @@
 .cartLink {
   display: flex;
   align-items: center;
+  border-radius: 5px;
+  padding: 0.25rem 0.5rem;
+}
+
+.cartLink:hover {
+  background-color: #e4e4e4;
 }
 
 .cartLink span {
   margin-right: 0.5rem;
+}
+
+.iconContainer {
+  position: relative;
+  margin-right: 0.5rem;
+}
+
+.itemCount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: -0.6rem;
+  left: 1rem;
+
+  font-size: 0.75rem;
+  line-height: 1;
+  background-color: #000;
+  color: #fff;
+  border-radius: 50%;
+
+  min-width: 1.25rem;
+  min-height: 1.25rem;
+  padding: 0.25rem;
 }
 
 .logo {
