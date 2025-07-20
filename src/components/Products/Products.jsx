@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useOutletContext, useParams } from "react-router-dom";
 import { truncateTitle, formatPrice } from "../../utils.js";
 import { Loading } from "../Loading/Loading.jsx";
 import { ErrorMessage } from "../ErrorMessage/ErrorMessage.jsx";
+import { AddToCart } from "../AddToCart/AddToCart.jsx";
 import styles from "./Products.module.css";
 
 function useFetchProducts(category) {
@@ -63,6 +64,9 @@ function useFetchProducts(category) {
 }
 
 const ProductCard = ({ title, price, imageLink, id }) => {
+  const [cart] = useOutletContext();
+  const isInCart = cart.find((item) => item.id === id);
+
   return (
     <li>
       <article className={styles.productCard}>
@@ -77,9 +81,14 @@ const ProductCard = ({ title, price, imageLink, id }) => {
           <h2 className={styles.productTitle}>{truncateTitle(title, 50)}</h2>
         </Link>
         <p className={styles.price}>${formatPrice(price)}</p>
-        <button type="button" className={styles.addToCart}>
-          Add to Cart
-        </button>
+        {isInCart && <p>Is In Cart</p>}
+        <AddToCart 
+          className={styles.addToCart}  
+          id={id}
+          title={title}
+          price={price}
+          imageLink={imageLink}
+        />
       </article>
     </li>
   );
@@ -107,10 +116,10 @@ const Products = () => {
         <ul className={styles.products}>
           {products.map((product) => (
             <ProductCard
+              id={product.id}
               title={product.title}
               price={product.price}
               imageLink={product.image}
-              id={product.id}
               key={product.id}
             />
           ))}
