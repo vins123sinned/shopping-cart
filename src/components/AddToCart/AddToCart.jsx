@@ -4,6 +4,7 @@ const AddToCart = ({ className, id, title, price, imageLink, quantity }) => {
   const [cart, setCart] = useOutletContext();
 
   const addToCart = () => {
+    if (quantity === 0) return;
     const isInCart = cart.find((item) => item.id === id);
 
     if (isInCart) {

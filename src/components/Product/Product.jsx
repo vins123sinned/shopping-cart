@@ -5,6 +5,7 @@ import { Loading } from "../Loading/Loading.jsx";
 import { ErrorMessage } from "../ErrorMessage/ErrorMessage.jsx";
 import { Quantity } from "../Quantity/Quantity.jsx";
 import styles from "./Product.module.css";
+import { AddToCart } from "../AddToCart/AddToCart.jsx";
 
 function useFetchProduct(productId) {
   const [product, setProduct] = useState(null);
@@ -55,6 +56,7 @@ function useFetchProduct(productId) {
 const Product = () => {
   const { productId } = useParams();
   const { product, loading, error } = useFetchProduct(productId);
+  const [quantity, setQuantity] = useState("1");
 
   const productLinkMap = {
     "men's clothing": "mens-clothing",
@@ -75,7 +77,7 @@ const Product = () => {
       {loading && <Loading />}
       {error && <ErrorMessage message={error} />}
       {product && (
-        <section className={styles.product}>
+        <section className={`${styles.product} mainSection`}>
           <img
             src={product.image}
             alt="Product Image"
@@ -93,10 +95,18 @@ const Product = () => {
             <h1 className={styles.productTitle}>{product.title}</h1>
             <p className={styles.price}>${formatPrice(product.price)}</p>
             <p className={styles.description}>{product.description}</p>
-            <Quantity />
-            <button type="button" className={styles.addToCart}>
-              Add to Cart
-            </button>
+            <Quantity 
+              quantity={quantity}
+              setQuantity={setQuantity}
+            />
+            <AddToCart 
+              className={styles.addToCart}
+              id={product.id}
+              title={product.title}
+              price={product.price}
+              imageLink={product.image}
+              quantity={Number(quantity)}
+            />
           </div>
         </section>
       )}

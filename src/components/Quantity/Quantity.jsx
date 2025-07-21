@@ -1,9 +1,7 @@
-import { useState } from "react";
 import styles from "./Quantity.module.css";
 
-const Quantity = () => {
+const Quantity = ({ quantity, setQuantity }) => {
   // when already in cart, update button to update cart!
-  const [quantity, setQuantity] = useState(1);
   const minQuantity = 0;
   const maxQuantity = 100;
 
