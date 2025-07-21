@@ -1,14 +1,10 @@
 import { Link } from "react-router-dom";
 import styles from "./Navbar.module.css";
 import { useEffect, useState } from "react";
+import { CartLink } from "../CartLink/CartLink";
 
 const Navbar = ({ cart }) => {
   const [openCategories, setOpenCategories] = useState(false);
-
-  const itemCount = cart.reduce(
-    (itemCount, item) => itemCount + Number(item.quantity),
-    0,
-  );
 
   // check media to show correct categories list
   useEffect(() => {
@@ -74,19 +70,7 @@ const Navbar = ({ cart }) => {
           </li>
         </ul>
       )}
-      <Link
-        to=""
-        className={styles.cartLink}
-        aria-label={`Cart with ${itemCount} item${itemCount > 1 ? "s" : ""}`}
-      >
-        <div className={styles.iconContainer}>
-          <span className="material-symbols-outlined" aria-hidden="true">
-            shopping_cart
-          </span>
-          <span className={styles.itemCount}>{itemCount}</span>
-        </div>
-        Cart
-      </Link>
+      <CartLink cart={cart} />
     </nav>
   );
 };

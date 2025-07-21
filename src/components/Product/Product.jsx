@@ -33,7 +33,7 @@ function useFetchProduct(productId) {
         setError(null);
       } catch (error) {
         if (error.name === "AbortError") {
-          console.log("Aborted!");
+          return;
         } else {
           setError(error.message);
           setProduct(null);
@@ -95,11 +95,8 @@ const Product = () => {
             <h1 className={styles.productTitle}>{product.title}</h1>
             <p className={styles.price}>${formatPrice(product.price)}</p>
             <p className={styles.description}>{product.description}</p>
-            <Quantity 
-              quantity={quantity}
-              setQuantity={setQuantity}
-            />
-            <AddToCart 
+            <Quantity quantity={quantity} setQuantity={setQuantity} />
+            <AddToCart
               className={styles.addToCart}
               id={product.id}
               title={product.title}

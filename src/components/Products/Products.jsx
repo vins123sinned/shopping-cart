@@ -44,7 +44,7 @@ function useFetchProducts(category) {
         setError(null);
       } catch (error) {
         if (error.name === "AbortError") {
-          console.log("Aborted!");
+          return;
         } else {
           setError(error.message);
           setProducts(null);
@@ -79,8 +79,8 @@ const ProductCard = ({ title, price, imageLink, id }) => {
           <h2 className={styles.productTitle}>{truncateTitle(title, 50)}</h2>
         </Link>
         <p className={styles.price}>${formatPrice(price)}</p>
-        <AddToCart 
-          className={styles.addToCart}  
+        <AddToCart
+          className={styles.addToCart}
           id={id}
           title={title}
           price={price}

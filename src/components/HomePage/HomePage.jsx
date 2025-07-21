@@ -4,7 +4,7 @@ import styles from "./HomePage.module.css";
 
 const HomePage = () => {
   return (
-    <>
+    <div className="mainSection">
       <section className={styles.hero}>
         <Link to={"shop"} className={styles.heroLink}>
           <div className={styles.textContainer}>
@@ -16,7 +16,7 @@ const HomePage = () => {
         </Link>
       </section>
       <Categories />
-    </>
+    </div>
   );
 };
 
