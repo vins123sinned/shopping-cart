@@ -63,6 +63,23 @@
   background-color: #2b2b2b;
 }
 
+.addToCart:focus-visible {
+  outline: 2px solid #2684ff;
+  animation: pulse 0.3s ease;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 @media (min-width: 800px) {
   .product {
     flex-direction: row;

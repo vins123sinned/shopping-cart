@@ -3,7 +3,7 @@ import { formatPrice } from "../../utils";
 import { Quantity } from "../Quantity/Quantity";
 import styles from "./Cart.module.css";
 
-const CartItem = ({ title, price, imageLink, quantity }) => {
+const CartItem = ({ title, price, imageLink, quantity, id }) => {
   return (
     <li>
       <article className={styles.cartItem}>
@@ -12,7 +12,7 @@ const CartItem = ({ title, price, imageLink, quantity }) => {
           <h2>{title}</h2>
         </div>
         <p>{price}</p>
-        <Quantity />
+        <Quantity quantity={quantity} id={id} />
         <p>${formatPrice(price * quantity)}</p>
       </article>
     </li>
@@ -20,7 +20,7 @@ const CartItem = ({ title, price, imageLink, quantity }) => {
 };
 
 const Cart = () => {
-  const [cart, setCart] = useOutletContext();
+  const [cart] = useOutletContext();
   const itemCount = cart.reduce(
     (itemCount, item) => itemCount + Number(item.quantity),
     0,
@@ -44,6 +44,7 @@ const Cart = () => {
             imageLink={item.imageLink}
             price={item.price}
             quantity={item.quantity}
+            id={item.id}
             key={item.id}
           />
         ))}
