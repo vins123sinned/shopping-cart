@@ -27,7 +27,7 @@ const CartLink = ({ cart }) => {
 
   return (
     <Link
-      to=""
+      to="cart"
       className={styles.cartLink}
       aria-label={`Cart with ${itemCount} item${itemCount > 1 ? "s" : ""}`}
     >
