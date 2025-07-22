@@ -1,7 +1,7 @@
 import { useOutletContext } from "react-router-dom";
 import styles from "./Quantity.module.css";
 
-const Quantity = ({ quantity, setQuantity, id }) => {
+const Quantity = ({ quantity, setQuantity, id, type }) => {
   const [cart, setCart] = useOutletContext();
   const minQuantity = 0;
   const maxQuantity = 100;
@@ -67,7 +67,7 @@ const Quantity = ({ quantity, setQuantity, id }) => {
   };
 
   return (
-    <>
+    <div className={styles[type]}>
       <label htmlFor="quantity" className={styles.quantityLabel}>
         Quantity
       </label>
@@ -103,7 +103,7 @@ const Quantity = ({ quantity, setQuantity, id }) => {
           </span>
         </button>
       </div>
-    </>
+    </div>
   );
 };
 

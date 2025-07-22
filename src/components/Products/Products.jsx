@@ -5,7 +5,6 @@ import { Loading } from "../Loading/Loading.jsx";
 import { ErrorMessage } from "../ErrorMessage/ErrorMessage.jsx";
 import { AddToCart } from "../AddToCart/AddToCart.jsx";
 import styles from "./Products.module.css";
-import { Quantity } from "../Quantity/Quantity.jsx";
 
 function useFetchProducts(category) {
   const [products, setProducts] = useState(null);
@@ -64,7 +63,7 @@ function useFetchProducts(category) {
   return { products, loading, error };
 }
 
-const ProductCard = ({ title, price, imageLink, id }) => {
+const ProductCard = ({ title, price, category, imageLink, id }) => {
   return (
     <li>
       <article className={styles.productCard}>
@@ -84,6 +83,7 @@ const ProductCard = ({ title, price, imageLink, id }) => {
           id={id}
           title={title}
           price={price}
+          category={category}
           imageLink={imageLink}
           quantity={1}
         />
@@ -117,6 +117,7 @@ const Products = () => {
               id={product.id}
               title={product.title}
               price={product.price}
+              category={product.category}
               imageLink={product.image}
               key={product.id}
             />

@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { formatPrice } from "../../utils.js";
+import { formatPrice, productLinkMap, productHeadingMap } from "../../utils.js";
 import { Loading } from "../Loading/Loading.jsx";
 import { ErrorMessage } from "../ErrorMessage/ErrorMessage.jsx";
 import { Quantity } from "../Quantity/Quantity.jsx";
@@ -58,20 +58,6 @@ const Product = () => {
   const { product, loading, error } = useFetchProduct(productId);
   const [quantity, setQuantity] = useState("1");
 
-  const productLinkMap = {
-    "men's clothing": "mens-clothing",
-    "women's clothing": "womens-clothing",
-    jewelery: "jewelry",
-    electronics: "electronics",
-  };
-
-  const productHeadingMap = {
-    "men's clothing": "Men's Clothing",
-    "women's clothing": "Women's Clothing",
-    jewelery: "Jewelry",
-    electronics: "Electronics",
-  };
-
   return (
     <section className={styles.productSection} data-testid="product-section">
       {loading && <Loading />}
@@ -101,6 +87,7 @@ const Product = () => {
               id={product.id}
               title={product.title}
               price={product.price}
+              category={product.category}
               imageLink={product.image}
               quantity={Number(quantity)}
             />

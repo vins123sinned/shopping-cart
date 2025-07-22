@@ -1,6 +1,14 @@
 import { useOutletContext } from "react-router-dom";
 
-const AddToCart = ({ className, id, title, price, imageLink, quantity }) => {
+const AddToCart = ({
+  className,
+  id,
+  title,
+  price,
+  imageLink,
+  quantity,
+  category,
+}) => {
   const [cart, setCart] = useOutletContext();
 
   const addToCart = () => {
@@ -18,6 +26,7 @@ const AddToCart = ({ className, id, title, price, imageLink, quantity }) => {
         id,
         title,
         price,
+        category,
         imageLink,
         quantity,
       };
