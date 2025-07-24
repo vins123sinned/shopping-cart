@@ -42,6 +42,13 @@ const Cart = () => {
     0,
   );
 
+  const subTotal = cart.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0,
+  );
+  const salesTax = subTotal * 0.08375;
+  const shippingFee = subTotal > 60 ? 0 : 5.0;
+
   const clearCart = () => {
     setCart([]);
   };
@@ -51,36 +58,65 @@ const Cart = () => {
       <h1 className={styles.cartHeading}>Your Cart</h1>
 
       <div className={styles.flexDiv}>
-        <ul className={styles.cartItems}>
-          <li className={styles.itemCountList}>
-            <p>{itemCount} items</p>
-          </li>
-          <li className={styles.headerList}>
-            <p className={styles.headerProduct}>Product</p>
-            <p className={styles.headerPrice}>Price</p>
-            <p className={styles.headerQuantity}>Quantity</p>
-            <p className={styles.headerTotal}>Total</p>
-          </li>
-          {cart.map((item) => (
-            <CartItem
-              title={item.title}
-              imageLink={item.imageLink}
-              price={item.price}
-              category={item.category}
-              quantity={item.quantity}
-              id={item.id}
-              key={item.id}
-            />
-          ))}
-        </ul>
+        <section className={styles.cartItemsContainer}>
+          <h2 className="screen-reader-only">Cart Items</h2>
+          <ul className={styles.cartItems}>
+            <li className={styles.itemCountList}>
+              <p>{itemCount} items</p>
+            </li>
+            <li className={styles.headerList}>
+              <p className={styles.headerProduct}>Product</p>
+              <p className={styles.headerPrice}>Price</p>
+              <p className={styles.headerTotal}>Total</p>
+              <p className={styles.headerQuantity}>Quantity</p>
+            </li>
+            {cart.map((item) => (
+              <CartItem
+                title={item.title}
+                imageLink={item.imageLink}
+                price={item.price}
+                category={item.category}
+                quantity={item.quantity}
+                id={item.id}
+                key={item.id}
+              />
+            ))}
+          </ul>
+        </section>
+
+        <section className={styles.orderContainer}>
+          <h2 className={styles.orderSummaryHeading}>Order Summary</h2>
+          <ul className={styles.orderSummary}>
+            <li className={styles.orderList}>
+              <p className={styles.orderDescription}>Subtotal:</p>
+              <p>${formatPrice(subTotal)}</p>
+            </li>
+            <li className={styles.orderList}>
+              <p className={styles.orderDescription}>Sales Tax (8.375%):</p>
+              <p>${formatPrice(salesTax)}</p>
+            </li>
+            <li className={styles.orderList}>
+              <p className={styles.orderDescription}>Shipping Fee:</p>
+              <p>
+                {shippingFee === 0 ? "Free" : `$${formatPrice(shippingFee)}`}
+              </p>
+            </li>
+            <li className={styles.orderList}>
+              <p className={styles.orderDescription}>Order Total:</p>
+              <p>${formatPrice(subTotal + salesTax + shippingFee)}</p>
+            </li>
+            <li>
+              <button
+                type="button"
+                className={styles.checkoutButton}
+                onClick={clearCart}
+              >
+                Checkout Now
+              </button>
+            </li>
+          </ul>
+        </section>
       </div>
-      <button
-        type="button"
-        className={styles.checkoutButton}
-        onClick={clearCart}
-      >
-        Checkout Now
-      </button>
     </section>
   );
 };

@@ -68,7 +68,7 @@ const Quantity = ({ quantity, setQuantity, id, type }) => {
 
   return (
     <div className={styles[type]}>
-      <label htmlFor="quantity" className={styles.quantityLabel}>
+      <label htmlFor="quantity" className="screen-reader-only">
         Quantity
       </label>
       <div className={styles.quantityContainer}>
