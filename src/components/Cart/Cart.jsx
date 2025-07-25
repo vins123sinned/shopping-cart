@@ -28,7 +28,7 @@ const CartItem = ({ title, price, category, imageLink, quantity, id }) => {
 
         <div className={styles.totalQuantityContainer}>
           <p className={styles.itemTotal}>${formatPrice(price * quantity)}</p>
-          <Quantity quantity={quantity} id={id} type={"cart"} />
+          <Quantity quantity={quantity} id={id} type="cart" />
         </div>
       </article>
     </li>

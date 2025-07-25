@@ -6,6 +6,10 @@ import { act } from "react";
 
 vi.mock("../Quantity/Quantity.jsx");
 
+vi.mock("../AddToCart/AddToCart.jsx", () => ({
+  AddToCart: () => <button>Add to Cart</button>,
+}));
+
 const mockProduct = {
   id: 9,
   title: "Placeholder Super Ultra Pro Max HD 123GB MODEL 1x2w3ecasdn",

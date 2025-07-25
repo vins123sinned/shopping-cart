@@ -3,6 +3,10 @@ import { render, screen, within } from "@testing-library/react";
 import { Products } from "./Products";
 import { MemoryRouter } from "react-router-dom";
 
+vi.mock("../AddToCart/AddToCart.jsx", () => ({
+  AddToCart: () => <button>Add to Cart</button>,
+}));
+
 const mockProducts = [
   {
     title: "Product 1",

@@ -5,6 +5,10 @@ import { vi } from "vitest";
 import userEvent from "@testing-library/user-event";
 import { Navbar } from "./Navbar";
 
+vi.mock("../CartLink/CartLink", () => ({
+  CartLink: () => <a href="#">Shopping Cart</a>,
+}));
+
 const mockMatchMedia = (matches) => {
   Object.defineProperty(window, "matchMedia", {
     writable: true,
@@ -18,7 +22,6 @@ const mockMatchMedia = (matches) => {
 };
 
 describe("Navigation component", () => {
-  // add test for mobile and userEvents too!
   beforeEach(() => {
     mockMatchMedia(true);
   });
