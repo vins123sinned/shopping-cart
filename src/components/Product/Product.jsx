@@ -1,6 +1,10 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { formatPrice, productLinkMap, productHeadingMap } from "../../utils.js";
+import {
+  formatPrice,
+  productLinkMap,
+  productHeadingMap,
+} from "../../utils/utils.js";
 import { Loading } from "../Loading/Loading.jsx";
 import { ErrorMessage } from "../ErrorMessage/ErrorMessage.jsx";
 import { Quantity } from "../Quantity/Quantity.jsx";

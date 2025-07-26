@@ -146,7 +146,6 @@ describe("Quantity component", () => {
     await user.type(input, "invalid!");
     expect(input).toHaveValue("1");
     await user.type(input, "23");
-    screen.debug(input);
     expect(input).toHaveValue("12");
     await user.type(input, "{backspace}");
     expect(input).toHaveValue("1");

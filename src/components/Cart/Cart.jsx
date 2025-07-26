@@ -1,5 +1,9 @@
 import { Link, useOutletContext } from "react-router-dom";
-import { formatPrice, productLinkMap, productHeadingMap } from "../../utils";
+import {
+  formatPrice,
+  productLinkMap,
+  productHeadingMap,
+} from "../../utils/utils.js";
 import { Quantity } from "../Quantity/Quantity";
 import styles from "./Cart.module.css";
 
@@ -58,8 +62,13 @@ const Cart = () => {
       <h1 className={styles.cartHeading}>Your Cart</h1>
 
       <div className={styles.flexDiv}>
-        <section className={styles.cartItemsContainer}>
-          <h2 className="screen-reader-only">Cart Items</h2>
+        <section
+          className={styles.cartItemsContainer}
+          aria-labelledby="cart-items"
+        >
+          <h2 className="screen-reader-only" id="cart-items">
+            Cart Items
+          </h2>
           <ul className={styles.cartItems}>
             <li className={styles.itemCountList}>
               <p>{itemCount} items</p>
@@ -84,8 +93,13 @@ const Cart = () => {
           </ul>
         </section>
 
-        <section className={styles.orderContainer}>
-          <h2 className={styles.orderSummaryHeading}>Order Summary</h2>
+        <section
+          className={styles.orderContainer}
+          aria-labelledby="order-summary"
+        >
+          <h2 className={styles.orderSummaryHeading} id="order-summary">
+            Order Summary
+          </h2>
           <ul className={styles.orderSummary}>
             <li className={styles.orderList}>
               <p className={styles.orderDescription}>Subtotal:</p>

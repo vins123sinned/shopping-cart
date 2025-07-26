@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { truncateTitle, formatPrice } from "../../utils.js";
+import { truncateTitle, formatPrice } from "../../utils/utils.js";
 import { Loading } from "../Loading/Loading.jsx";
 import { ErrorMessage } from "../ErrorMessage/ErrorMessage.jsx";
 import { AddToCart } from "../AddToCart/AddToCart.jsx";
