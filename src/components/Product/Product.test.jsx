@@ -43,8 +43,6 @@ describe("Product component", () => {
       );
     });
 
-    screen.debug();
-
     const productSection = await screen.findByTestId("product-section");
 
     expect(
