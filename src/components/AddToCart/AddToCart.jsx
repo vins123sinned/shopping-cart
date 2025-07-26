@@ -36,7 +36,12 @@ const AddToCart = ({
   };
 
   return (
-    <button type="button" className={className} onClick={addToCart}>
+    <button
+      type="button"
+      className={className}
+      onClick={addToCart}
+      disabled={quantity === 0}
+    >
       Add to Cart
     </button>
   );

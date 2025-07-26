@@ -1,5 +1,5 @@
 .cartSection {
-  padding: 2.5rem;
+  padding: 8rem 2.5rem;
 }
 
 .cartHeading {
@@ -56,13 +56,15 @@
   font-size: 1.15rem;
 }
 
-.itemCategory {
+.itemCategory,
+.emptyCartNotification a {
   display: inline-block;
   color: #444444;
   margin-top: 0.25rem;
 }
 
-.itemCategory:hover {
+.itemCategory:hover,
+.emptyCartNotification a:hover {
   text-decoration: underline;
 }
 
@@ -142,6 +144,16 @@
 .checkoutButton:focus-visible {
   outline: 2px solid #2684ff;
   animation: pulse 0.3s ease;
+}
+
+.emptyCartNotification {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  padding: 1.1rem;
+}
+
+.emptyCartNotification p {
+  font-weight: 800;
 }
 
 @keyframes pulse {

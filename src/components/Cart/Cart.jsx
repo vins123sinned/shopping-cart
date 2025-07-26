@@ -79,17 +79,24 @@ const Cart = () => {
               <p className={styles.headerTotal}>Total</p>
               <p className={styles.headerQuantity}>Quantity</p>
             </li>
-            {cart.map((item) => (
-              <CartItem
-                title={item.title}
-                imageLink={item.imageLink}
-                price={item.price}
-                category={item.category}
-                quantity={item.quantity}
-                id={item.id}
-                key={item.id}
-              />
-            ))}
+            {cart.length !== 0 ? (
+              cart.map((item) => (
+                <CartItem
+                  title={item.title}
+                  imageLink={item.imageLink}
+                  price={item.price}
+                  category={item.category}
+                  quantity={item.quantity}
+                  id={item.id}
+                  key={item.id}
+                />
+              ))
+            ) : (
+              <li className={styles.emptyCartNotification}>
+                <p>Nothing here yet.</p>
+                <Link to="/shop">Experience our Collection</Link>
+              </li>
+            )}
           </ul>
         </section>
 
@@ -112,18 +119,27 @@ const Cart = () => {
             <li className={styles.orderList}>
               <p className={styles.orderDescription}>Shipping Fee:</p>
               <p>
-                {shippingFee === 0 ? "Free" : `$${formatPrice(shippingFee)}`}
+                {cart.length !== 0
+                  ? shippingFee === 0
+                    ? "Free"
+                    : `$${formatPrice(shippingFee)}`
+                  : "TBD"}
               </p>
             </li>
             <li className={styles.orderList}>
               <p className={styles.orderDescription}>Order Total:</p>
-              <p>${formatPrice(subTotal + salesTax + shippingFee)}</p>
+              <p>
+                {cart.length !== 0
+                  ? `$${formatPrice(subTotal + salesTax + shippingFee)}`
+                  : "TBD"}
+              </p>
             </li>
             <li>
               <button
                 type="button"
                 className={styles.checkoutButton}
                 onClick={clearCart}
+                disabled={cart.length === 0}
               >
                 Checkout Now
               </button>
