@@ -67,7 +67,7 @@ const Product = () => {
       className={`${styles.productSection} mainSection`}
       data-testid="product-section"
     >
-      {(loading || !product) && <Loading />}
+      {loading && !product && <Loading />}
       {error && <ErrorMessage message={error} />}
       {product && (
         <>
