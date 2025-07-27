@@ -63,11 +63,14 @@ const Product = () => {
   const [quantity, setQuantity] = useState("1");
 
   return (
-    <section className={styles.productSection} data-testid="product-section">
-      {loading && <Loading />}
+    <section
+      className={`${styles.productSection} mainSection`}
+      data-testid="product-section"
+    >
+      {(loading || !product) && <Loading />}
       {error && <ErrorMessage message={error} />}
       {product && (
-        <section className={`${styles.product} mainSection`}>
+        <>
           <img
             src={product.image}
             alt="Product Image"
@@ -96,7 +99,7 @@ const Product = () => {
               quantity={Number(quantity)}
             />
           </div>
-        </section>
+        </>
       )}
     </section>
   );

@@ -1,9 +1,5 @@
 .productSection {
-  padding: 6rem 1.5rem;
-}
-
-.product {
-  padding: 5rem 0 3rem 0;
+  padding: 10rem 1.5rem 6rem 1.5rem;
   display: flex;
   flex-direction: column;
 }
@@ -83,12 +79,13 @@
 }
 
 @media (min-width: 800px) {
-  .product {
+  .productSection {
     flex-direction: row;
     justify-content: center;
     align-items: center;
     min-height: 400px;
-    height: 70vh;
+    height: 90vh;
+    max-height: 1200px;
   }
 
   .productImage {
@@ -124,7 +121,7 @@
 }
 
 @media (min-width: 930px) {
-  .product {
+  .productSection {
     justify-content: space-around;
     max-width: 70rem;
     margin: 0 auto;

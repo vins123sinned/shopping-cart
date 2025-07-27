@@ -108,7 +108,7 @@ const Products = () => {
   return (
     <section className={`${styles.productsSection} mainSection`}>
       <h1 className={styles.productsHeading}>{heading || "All Products"}</h1>
-      {loading && <Loading />}
+      {(loading || !products) && <Loading />}
       {error && <ErrorMessage message={error} />}
       {products && (
         <ul className={styles.products}>

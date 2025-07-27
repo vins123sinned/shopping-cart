@@ -1,5 +1,5 @@
 .productsSection {
-  padding: 1.5rem;
+  padding: 4.4rem 1.5rem;
 }
 
 .productsHeading {
@@ -83,7 +83,7 @@
 
 @media (min-width: 400px) and (max-width: 530px) {
   .productsSection {
-    padding: 1.5rem 3rem;
+    padding: 4.4rem 3rem;
   }
 }
 
@@ -98,12 +98,6 @@
   .products {
     gap: 3rem;
     grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1080px) {
-  .productsSection {
-    padding: 10rem 3rem;
   }
 }
 
