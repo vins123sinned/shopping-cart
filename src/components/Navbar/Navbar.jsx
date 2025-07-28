@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import { CartLink } from "../CartLink/CartLink";
 import styles from "./Navbar.module.css";
+import { useEffect, useState } from "react";
+import { CartLink } from "../CartLink/CartLink";
 
 const Navbar = ({ cart }) => {
   const [openCategories, setOpenCategories] = useState(false);
@@ -74,10 +73,6 @@ const Navbar = ({ cart }) => {
       <CartLink cart={cart} />
     </nav>
   );
-};
-
-Navbar.propTypes = {
-  cart: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export { Navbar };

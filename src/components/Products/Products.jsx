@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { truncateTitle, formatPrice } from "../../utils/utils.js";
-import PropTypes from "prop-types";
 import { Loading } from "../Loading/Loading.jsx";
 import { ErrorMessage } from "../ErrorMessage/ErrorMessage.jsx";
 import { AddToCart } from "../AddToCart/AddToCart.jsx";
@@ -127,14 +126,6 @@ const Products = () => {
       )}
     </section>
   );
-};
-
-ProductCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  category: PropTypes.string.isRequired,
-  imageLink: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
 };
 
 export { Products };

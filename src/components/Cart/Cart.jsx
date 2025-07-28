@@ -4,7 +4,6 @@ import {
   productLinkMap,
   productHeadingMap,
 } from "../../utils/utils.js";
-import PropTypes from "prop-types";
 import { Quantity } from "../Quantity/Quantity";
 import styles from "./Cart.module.css";
 
@@ -150,15 +149,6 @@ const Cart = () => {
       </div>
     </section>
   );
-};
-
-CartItem.propTypes = {
-  title: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  category: PropTypes.string.isRequired,
-  imageLink: PropTypes.string.isRequired,
-  quantity: PropTypes.number.isRequired,
-  id: PropTypes.number.isRequired,
 };
 
 export { Cart };

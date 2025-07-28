@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import styles from "./Categories.module.css";
 
@@ -32,12 +31,6 @@ const Categories = () => {
       </ul>
     </section>
   );
-};
-
-Category.propTypes = {
-  children: PropTypes.element.isRequired,
-  category: PropTypes.string.isRequired,
-  endpoint: PropTypes.string.isRequired,
 };
 
 export { Categories };

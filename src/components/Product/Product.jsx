@@ -8,8 +8,8 @@ import {
 import { Loading } from "../Loading/Loading.jsx";
 import { ErrorMessage } from "../ErrorMessage/ErrorMessage.jsx";
 import { Quantity } from "../Quantity/Quantity.jsx";
-import { AddToCart } from "../AddToCart/AddToCart.jsx";
 import styles from "./Product.module.css";
+import { AddToCart } from "../AddToCart/AddToCart.jsx";
 
 function useFetchProduct(productId) {
   const [product, setProduct] = useState(null);

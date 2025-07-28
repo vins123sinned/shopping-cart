@@ -1,5 +1,4 @@
 import styles from "./Attribution.module.css";
-import PropTypes from "prop-types";
 
 const Attribution = ({ photo, name, link }) => {
   return (
@@ -11,12 +10,6 @@ const Attribution = ({ photo, name, link }) => {
       on Pexels
     </li>
   );
-};
-
-Attribution.propTypes = {
-  photo: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
 };
 
 export { Attribution };

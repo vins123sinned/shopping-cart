@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import styles from "./CartLink.module.css";
 
@@ -43,10 +42,6 @@ const CartLink = ({ cart }) => {
       Cart
     </Link>
   );
-};
-
-CartLink.propTypes = {
-  cart: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export { CartLink };
