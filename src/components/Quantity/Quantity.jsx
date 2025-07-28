@@ -1,4 +1,5 @@
 import { useOutletContext } from "react-router-dom";
+import PropTypes from "prop-types";
 import styles from "./Quantity.module.css";
 
 const Quantity = ({ quantity, setQuantity, id, type }) => {
@@ -105,6 +106,13 @@ const Quantity = ({ quantity, setQuantity, id, type }) => {
       </div>
     </div>
   );
+};
+
+Quantity.propTypes = {
+  quantity: PropTypes.number.isRequired,
+  setQuantity: PropTypes.func,
+  id: PropTypes.number,
+  type: PropTypes.string,
 };
 
 export { Quantity };

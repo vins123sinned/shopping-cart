@@ -1,4 +1,5 @@
 import { useOutletContext } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const AddToCart = ({
   className,
@@ -45,6 +46,16 @@ const AddToCart = ({
       Add to Cart
     </button>
   );
+};
+
+AddToCart.propTypes = {
+  className: PropTypes.string,
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  imageLink: PropTypes.string.isRequired,
+  quantity: PropTypes.number.isRequired,
+  category: PropTypes.string.isRequired,
 };
 
 export { AddToCart };
